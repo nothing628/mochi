@@ -1,14 +1,9 @@
 {
   "imports": {
     "~/": "./",
-    "std/": "https://deno.land/std@0.155.0/",
-    "aleph/": "https://deno.land/x/aleph@1.0.0-beta.21/",
-    "aleph/server": "https://deno.land/x/aleph@1.0.0-beta.21/server/mod.ts",
-    "aleph/dev": "https://deno.land/x/aleph@1.0.0-beta.21/server/dev.ts",
-    "aleph/vue": "https://deno.land/x/aleph@1.0.0-beta.21/runtime/vue/mod.ts",
-    "aleph/vue-server": "https://deno.land/x/aleph@1.0.0-beta.21/runtime/vue/server.ts",
-    "vue": "https://esm.sh/vue@3.2.39",
-    "@vue/server-renderer": "https://esm.sh/@vue/server-renderer@3.2.39"
+    "hbr": "https://deno.land/x/handlebars@v0.9.0/",
+    "oak": "https://deno.land/x/oak/mod.ts",
+    "std/": "https://deno.land/std@0.155.0/"
   },
   "scopes": {}
 }

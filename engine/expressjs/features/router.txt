@@ -1,0 +1,16 @@
+// [[IMPORT]]
+
+// [[/IMPORT]]
+
+function registerRoute(app) {
+  app.get("/", (req, res) => {
+    res.send("Hello World!");
+  });
+  // [[ROUTE]]
+
+  // [[/ROUTE]]
+}
+
+module.exports = {
+  registerRoute,
+};

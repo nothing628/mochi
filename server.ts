@@ -1,5 +1,9 @@
-import { serve } from "aleph/vue-server";
+import { Application } from "oak";
 
-serve({
-  ssr: true,
+const app = new Application();
+
+app.use((ctx) => {
+  ctx.response.body = "Hello world!";
 });
+
+await app.listen({ port: 8000 });
