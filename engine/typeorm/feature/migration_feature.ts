@@ -1,4 +1,4 @@
-import { Feature, FeatureBase, Props } from "../feature_base.ts";
+import { Feature, FeatureBase, Props } from "~/engine/feature_base.ts";
 import { render } from "eta";
 
 const template = `import { MigrationInterface, QueryRunner, Table } from "typeorm";

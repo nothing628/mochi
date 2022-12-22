@@ -1,4 +1,4 @@
-import { FeatureBase, Props } from "../feature_base.ts";
+import { FeatureBase, Props } from "~/engine/feature_base.ts";
 import { render } from "eta";
 
 const template = `public async up(queryRunner: QueryRunner): Promise<void> {
