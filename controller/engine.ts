@@ -6,7 +6,14 @@ import TableFeature, {
 import CreateTableFeature, {
   CreateTableFeatureProperies,
 } from "~/engine/typeorm/create_table_feature.ts";
+import DropTableFeature, {
+  DropTableFeatureProperies,
+} from "~/engine/typeorm/drop_table_feature.ts";
 import UpRunnerFeature from "~/engine/typeorm/up_runner_feature.ts";
+import DownRunnerFeature from "~/engine/typeorm/down_runner_feature.ts";
+import MigrationFeature, {
+  MigrationFeatureProperies,
+} from "~/engine/typeorm/migration_feature.ts";
 
 export const getEvents = (ctx: Context) => {
   const result = render("Hi, myname is <%= it.name %>", { name: "Bambank" });
@@ -35,5 +42,23 @@ export const getResult = (ctx: Context) => {
     children: [createTableFeature, createTableFeature, createTableFeature],
   });
 
-  ctx.response.body = upRunnerFeature.resolve();
+  const dropTableProps: DropTableFeatureProperies = {
+    tableName: "users",
+  };
+  const dropTableFeature = new DropTableFeature();
+  dropTableFeature.setProps(dropTableProps);
+  const downRunnerFeature = new DownRunnerFeature();
+  downRunnerFeature.setProps({
+    children: [dropTableFeature, dropTableFeature, dropTableFeature],
+  });
+
+  const migration = new MigrationFeature();
+  const migrationProps: MigrationFeatureProperies = {
+    downChild: downRunnerFeature,
+    upChild: upRunnerFeature,
+    migrationName: "CreateUserTable",
+  };
+  migration.setProps(migrationProps);
+
+  ctx.response.body = migration.resolve();
 };
