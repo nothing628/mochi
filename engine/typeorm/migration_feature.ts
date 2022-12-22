@@ -1,4 +1,4 @@
-import { Feature, Props } from "../feature_base.ts";
+import { Feature, FeatureBase, Props } from "../feature_base.ts";
 import { render } from "eta";
 
 const template = `import { MigrationInterface, QueryRunner, Table } from "typeorm";
@@ -18,24 +18,11 @@ export type MigrationFeatureProperies = Props & {
     migrationName: string,
 };
 
-class MigrationFeature implements Feature {
-  name = "MigrationFeature";
-  template = "";
-
+class MigrationFeature extends FeatureBase {
   public props?: MigrationFeatureProperies;
 
   setProps(p: Props) {
     this.props = p as MigrationFeatureProperies;
-  }
-
-  protected addIndentation(input: string): string {
-    const lines = input.split("\n");
-    const result = lines.map((line, idx) => {
-      if (idx == 0) return line;
-      return "  " + line;
-    });
-
-    return result.join("\n");
   }
 
   resolve(): string {

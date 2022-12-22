@@ -1,4 +1,4 @@
-import { Feature, Props } from "../feature_base.ts";
+import { FeatureBase, Props } from "../feature_base.ts";
 import { render } from "eta";
 
 const template = `await queryRunner.createTable(
@@ -8,10 +8,7 @@ const template = `await queryRunner.createTable(
 
 export type CreateTableFeatureProperies = Props;
 
-class CreateTableFeature implements Feature {
-  name = "CreateTableFeature";
-  template = "";
-
+class CreateTableFeature extends FeatureBase {
   public props?: CreateTableFeatureProperies;
 
   setProps(p: Props) {
@@ -29,16 +26,6 @@ class CreateTableFeature implements Feature {
     }
 
     throw new Error("Invalid children");
-  }
-
-  protected addIndentation(input: string): string {
-    const lines = input.split("\n");
-    const result = lines.map((line, idx) => {
-      if (idx == 0) return line;
-      return "  " + line;
-    });
-
-    return result.join("\n");
   }
 
   resolve(): string {

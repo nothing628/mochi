@@ -1,4 +1,4 @@
-import { Feature, Props } from "../feature_base.ts";
+import { FeatureBase, Props } from "../feature_base.ts";
 import { render } from "eta";
 
 const template = `new Table({
@@ -7,10 +7,7 @@ const template = `new Table({
 
 export type TableFeatureProperies = Props
 
-class TableFeature implements Feature {
-  name = "TableFeature";
-  template = "";
-
+class TableFeature extends FeatureBase {
   public props?: TableFeatureProperies;
 
   setProps(p: Props) {

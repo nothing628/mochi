@@ -1,4 +1,4 @@
-import { Feature, Props } from "../feature_base.ts";
+import { FeatureBase, Props } from "../feature_base.ts";
 import { render } from "eta";
 
 const template = `await queryRunner.dropTable("<%=it.tableName%>", true);`;
@@ -7,10 +7,7 @@ export type DropTableFeatureProperies = Props & {
   tableName: string;
 };
 
-class DropTableFeature implements Feature {
-  name = "CreateTableFeature";
-  template = "";
-
+class DropTableFeature extends FeatureBase {
   public props?: DropTableFeatureProperies;
 
   setProps(p: Props) {
