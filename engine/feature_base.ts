@@ -1,5 +1,11 @@
+export type Props = {
+  children?: Feature[],
+  [key: string]: unknown
+}
+
 export interface Feature {
   name: string;
   template?: string;
-  resolve: (props: unknown) => string;
+  setProps: (props: Props) => void;
+  resolve: () => string;
 }

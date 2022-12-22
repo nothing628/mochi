@@ -1,5 +1,5 @@
 import { Application, Router } from "oak";
-import { getEvents } from "~/controller/engine.ts";
+import { getEvents, getResult } from "~/controller/engine.ts";
 
 const app = new Application();
 const router = new Router();
@@ -10,6 +10,7 @@ router.get("/", (ctx) => {
   };
 });
 router.get("/events", getEvents);
+router.get('/compile', getResult);
 
 app.use(router.routes());
 
